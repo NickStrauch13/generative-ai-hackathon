@@ -1,7 +1,7 @@
 #!/usr/local/bin/python3
 from flask import Flask, abort, jsonify, request
 from flask_cors import CORS, cross_origin
-from combined_yt_gpt import main_combined, get_difficulty_and_time
+from combined_yt_gpt import main_combined, get_difficulty_and_time, elaborate_step
 
 app = Flask(__name__)
 cors = CORS(app)
@@ -22,6 +22,15 @@ def difficulty():
     # get the cache file from main_combined
     difficulty, time = get_difficulty_and_time()
     data = {'difficulty': difficulty, "time": time}
+    return jsonify(data)
+
+@app.route('/elaborate_step', methods=['POST'])
+@cross_origin()
+def elaborate():
+    # get the query from main_combined
+    step = request.json['step']
+    response = elaborate_step(step)
+    data = {'response': response}
     return jsonify(data)
 
 @app.route('/example', methods=['GET'])
