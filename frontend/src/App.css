@@ -19,7 +19,7 @@ body {
   font-family: 'Roboto', sans-serif;
   background-color: #fff; /* Set background color to white for light theme */
   color: #333; /* Set text color to a dark color for contrast */
-  height: 100vh;
+  min-height: 100vh;
 }
 
 .navbar-container {
@@ -128,7 +128,7 @@ body {
   flex-direction: column;
   justify-content: top;
   align-items: center;
-  height: 100vh;
+  min-height: 100vh;
 }
 
 .main-content-input-container {
@@ -183,19 +183,30 @@ body {
   flex-direction: column;
   margin-top: 50px;
   max-width: 75%;
+  margin-bottom: 50px;
 }
 
 .step-block {
   display: flex;
-  justify-content: flex-start; /* Align text to the left */
+  justify-content: flex-start; 
   align-items: center;
   flex-direction: row;
   margin-top: 10px;
   max-width: 100%;
-  background-color: #f0f0f0; /* Lighter grey color */
-  padding: 10px; /* Add padding for better spacing */
-  border-radius: 8px; /* Add rounded corners */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+  background-color: #f0f0f0; 
+  padding: 10px; 
+  border-radius: 8px; 
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.step-block:hover {
+  background-color: #e0e0e0;
+}
+
+.step-block:active {
+  background-color: #c0c0c0; /* Change background color on click */
 }
 
 .step-number {
