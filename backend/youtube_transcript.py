@@ -49,7 +49,7 @@ def find_suitable_video(search_query):
         video_link = get_youtube_link(search_query, page_token)  # Pass the page token here
         if not video_link:
             break
-        print(video_link)
+        # print(video_link)
 
         video_id = getVideoIDfromLink(video_link)
         transcript_text = getYoutubeTranscript(video_id)
@@ -78,6 +78,6 @@ def find_suitable_video(search_query):
     return None
 # Example usage:
 # search_query = "how to bake a cake"
-# video_link, transcript = find_suitable_video(search_query)
+# video_link = find_suitable_video(search_query)
 # print(video_link)
 # print(transcript)  # This will print the transcript of the suitable video
