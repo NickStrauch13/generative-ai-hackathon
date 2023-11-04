@@ -5,7 +5,7 @@
 }
 
 :root {
-  --accent-color: #8B4513; 
+  --accent-color: #704214;
   --dark-accent-color: #5a2d0c;
 }
 
@@ -37,6 +37,8 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 0 40px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  background: linear-gradient(to right, #704214, #987654);
 }
 
 .navbar-title {
@@ -132,7 +134,7 @@ body {
 .main-content-input-container {
   width: 800px;
   display: flex; 
-  margin-top: 50px;
+  margin-top: 100px;
   justify-content: center;
   align-items: center; 
   text-align: center;
@@ -185,12 +187,28 @@ body {
 
 .step-block {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start; /* Align text to the left */
   align-items: center;
   flex-direction: row;
   margin-top: 10px;
   max-width: 100%;
-  background-color: #d4d4d4;
+  background-color: #f0f0f0; /* Lighter grey color */
+  padding: 10px; /* Add padding for better spacing */
+  border-radius: 8px; /* Add rounded corners */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+}
+
+.step-number {
+  font-size: 24px; 
+  font-weight: bold;
+  margin: 0; 
+  margin-right: 20px;
+}
+
+.step-text {
+  font-size: 18px; 
+  font-weight: bold;
+  margin: 0; 
 }
 
 .main-content-info-container {

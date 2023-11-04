@@ -10,13 +10,15 @@ const MainContent = () => {
     const [textValue, setTextValue] = useState("");
     const [generatedSteps, setGeneratedSteps] = useState([]);
     const [youtubeLink, setYoutubeLink] = useState("");
+    const [difficulty, setDifficulty] = useState("");
+    const [time, setTime] = useState("");
 
     const handleTextChange = (value) => {
         setTextValue(value);
     };
 
     const handleGenerateStepsClick = () => {
-        handleGenerateSteps(textValue, setGeneratedSteps, setYoutubeLink);
+        handleGenerateSteps(textValue, setGeneratedSteps, setYoutubeLink, setDifficulty, setTime);
     };
 
 
@@ -27,8 +29,8 @@ const MainContent = () => {
                 <button className="main-content-submit-button" onClick={handleGenerateStepsClick}>Generate</button>
             </div>
             <div className="main-content-info-container">
-                <Rating rating={3}/>
-                <EstimatedTime time={120}/>
+                <Rating rating={difficulty}/>
+                <EstimatedTime time={time}/>
                 <EstimatedCost cost={80}/>
             </div>
             <InstructionSteps generatedSteps={generatedSteps}/>

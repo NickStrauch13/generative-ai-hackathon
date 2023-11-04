@@ -1,9 +1,10 @@
 import React from 'react';
 
-const StepBlock = ({ text }) => {
+const StepBlock = ({ text, stepNumber }) => {
   return (
     <div className="step-block">
-      <p>{text}</p>
+      <span className="step-number">{stepNumber}</span>
+      <p className="step-text">{text}</p>
     </div>
   );
 };

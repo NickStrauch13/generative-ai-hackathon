@@ -5,13 +5,13 @@ const InstructionSteps = ({ generatedSteps }) => {
   return (
     <div className="instruction-steps-container">
       {generatedSteps.length > 0 && (
-        <ol>
+        <ul style={{ listStyleType: 'none' }}>
           {generatedSteps.map((step, index) => (
             <li key={index}>
-              <StepBlock text={step} />
+              <StepBlock text={step} stepNumber={index + 1} />
             </li>
           ))}
-        </ol>
+        </ul>
       )}
     </div>
   );

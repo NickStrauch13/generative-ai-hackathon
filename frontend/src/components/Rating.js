@@ -2,7 +2,7 @@ import React from 'react';
 
 const Rating = ({ rating }) => {
   const maxRating = 5;
-  const filledCircles = Math.min(maxRating, rating);
+  const filledCircles = Math.min(maxRating, parseInt(rating, 10));
 
   const getCircleColor = () => {
     if (rating <= 2) {
