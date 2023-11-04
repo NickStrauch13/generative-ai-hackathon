@@ -43,14 +43,25 @@ const Rating = ({ rating }) => {
 
   const ratingTextColor = getCircleColor();
   const ratingDescription = getRatingDescription();
-
+  const titleStyle = {
+    textDecoration: 'underline',
+    textAlign: 'center',
+    marginBottom: '0.5em', // This adds some space between the title and the cost
+    alignItems: 'center',
+    justifyContent: 'center',
+    fontSize: '1.5em',
+    fontWeight: 'bold',
+  };
   return (
-    <div className="rating-container">
-        <p className="rating-text-inital">Difficulty: </p>
-        <div className="rating-circles-container">{circles}</div>
+    <div className="rating-container" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+        <p style={titleStyle}>Difficulty</p>
+        <div className="rating-circles-container" style={{ display: 'flex', justifyContent: 'center' }}>
+            {circles}
+        </div>
         <p className="rating-text-description" style={{ color: ratingTextColor }}>({ratingDescription})</p>
     </div>
-  )
+);
+
 };
 
 export default Rating;
