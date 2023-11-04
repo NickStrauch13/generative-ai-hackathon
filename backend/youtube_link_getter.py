@@ -8,6 +8,7 @@ GOOGLE_API_KEY = os.getenv('GOOGLE_API_KEY')
 
 def get_youtube_link(search_query):
     # Step 1: Perform the search
+    search_query = search_query+' audio guide clear steps'
     response = requests.get(
         'https://www.googleapis.com/youtube/v3/search',
         params={
