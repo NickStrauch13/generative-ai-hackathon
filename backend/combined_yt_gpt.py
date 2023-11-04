@@ -4,22 +4,18 @@ import tempfile
 import os
 import json
 
-temp_dir = "conversation_cache"
+temp_dir = os.path.join("backend", "conversation_cache")
 
 def main_combined(query="My toilet is broken, what should I do?"):
     # get the youtube link
     suitable_video = find_suitable_video(query)
-    if suitable_video is None:
+    while suitable_video is None:
         print("Couldn't find a suitable video for the given query.")
-        youtube_link = "youtube_link"
-        transcript = ""
-    else:
-        # get the youtube link
-        youtube_link = suitable_video[0]
-    
-        # get the transcript
-        transcript = suitable_video[1]
-    
+        query = input("Please try a different query: ")
+        suitable_video = find_suitable_video(query)
+    youtube_link = suitable_video[0]
+    # get the transcript
+    transcript = suitable_video[1]
     # query for solution steps
     new_query = f"Using this video transcript to help source information '{transcript}', answer this question '{query}' in clear steps"
     response = query_gpt(new_query, transcript=transcript, max_tokens=400)
@@ -44,7 +40,8 @@ def cache_conversation(transcript, response, query):
     # Create a new temporary file
     temp = tempfile.NamedTemporaryFile(dir=temp_dir,delete=False)
     temp_path = os.path.join(os.getcwd(), temp_dir, temp.name)
-    # save the transcript, response, and og query to the file using json
+    # save the transcript and response to the file using json
+    # Save the transcript and response to the file using json
     with open(temp_path, 'w') as f:
         json.dump({"transcript": transcript, "response": response, "og_query": query}, f)
         print(f'Temporary file created: {temp.name}')
