@@ -23,7 +23,7 @@ def getYoutubeTranscript(video_id):
     text = ' '.join([entry['text'] for entry in transcript])
     return text
 
-def get_youtube_link(search_query):
+def get_youtube_link(search_query, page_token=None):
     search_query += ' audio guide clear steps'
     response = requests.get(
         'https://www.googleapis.com/youtube/v3/search',
@@ -32,29 +32,52 @@ def get_youtube_link(search_query):
             'q': search_query,
             'type': 'video',
             'part': 'snippet',
-            'maxResults': 10
+            'maxResults': 1,
+            'pageToken': page_token  # Pass the page token here
         }
     )
 
-    # Extract video links
-    video_links = ["https://www.youtube.com/watch?v=" + item['id']['videoId'] for item in response.json()['items']]
-    return video_links
+    # Extract video link
+    if response.json().get('items'):
+        return "https://www.youtube.com/watch?v=" + response.json()['items'][0]['id']['videoId']
+    else:
+        return None
 
 def find_suitable_video(search_query):
-    video_links = get_youtube_link(search_query)
+    page_token = None
+    while True:
+        video_link = get_youtube_link(search_query, page_token)  # Pass the page token here
+        if not video_link:
+            break
+        print(video_link)
 
-    for link in video_links:
-        video_id = getVideoIDfromLink(link)
+        video_id = getVideoIDfromLink(video_link)
         transcript_text = getYoutubeTranscript(video_id)
         
         if transcript_text:
             word_count = len(transcript_text.split())
             if 100 <= word_count <= 1000:
-                return link, transcript_text
+                return video_link, transcript_text
 
-    return None  # Return None if no suitable video found
+        # Get the next page token for the next iteration
+        response = requests.get(
+            'https://www.googleapis.com/youtube/v3/search',
+            params={
+                'key': GOOGLE_API_KEY,
+                'q': search_query,
+                'type': 'video',
+                'part': 'snippet',
+                'maxResults': 1,
+                'pageToken': page_token  # This will be used for pagination
+            }
+        )
+        page_token = response.json().get('nextPageToken')
+        if not page_token:
+            break  # Break if there's no more videos to fetch
 
+    return None
 # Example usage:
-search_query = "how to bake a cake"
-video_link = find_suitable_video(search_query)
+# search_query = "how to bake a cake"
+# video_link, transcript = find_suitable_video(search_query)
 # print(video_link)
+# print(transcript)  # This will print the transcript of the suitable video
