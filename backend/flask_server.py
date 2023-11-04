@@ -1,16 +1,20 @@
 #!/usr/local/bin/python3
-
 from flask import Flask, abort, jsonify, request
 from flask_cors import CORS, cross_origin
+from combined_yt_gpt import main_combined
 
 app = Flask(__name__)
 cors = CORS(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
 
-@app.route('/generate', methods=['POST'])
+@app.route('/generate_steps', methods=['POST'])
 @cross_origin()
 def generate():
-    pass
+    # get the query from main_combined
+    query = request.json['query']
+    response_steps, yt_link = main_combined(query)
+    data = {'response': response_steps, 'yt_link': yt_link}
+    return jsonify(data)
 
 @app.route('/example', methods=['GET'])
 def example():
