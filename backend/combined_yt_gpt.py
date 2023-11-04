@@ -1,13 +1,13 @@
 from query_gpt import query_gpt
-from youtube_link_getter import get_youtube_link
-from youtube_transcript import getYoutubeTranscript
+from youtube_transcript import find_suitable_video
 
 def main_combined(query="My toilet is broken, what should I do?"):
     # get the youtube link
-    youtube_link = get_youtube_link(query)
+    suitable_video = find_suitable_video(query)[0]
+    youtube_link = suitable_video[0]
     # get the transcript
-    transcript = getYoutubeTranscript(youtube_link)
-    # get the response
+    transcript = suitable_video[1]
+
     new_query = f"Using this video transcript to help source information '{transcript}', answer this question '{query}' in clear steps"
     response = query_gpt(query, transcript=transcript, max_tokens=150)
     # get the steps
