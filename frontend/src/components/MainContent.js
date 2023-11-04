@@ -39,15 +39,16 @@ const MainContent = () => {
                 <textarea className="main-content-input-box" rows="2" value={textValue} onChange={(e) => handleTextChange(e.target.value)} placeholder="What do you need to fix?"/>
                 <button className="main-content-submit-button" onClick={handleGenerateStepsClick}>Generate</button>
             </div>
-            {hasGenerated && (
+            {!infoIsLoading && hasGenerated && (
               <div className="main-content-info-container">
                   <Rating rating={difficulty}/>
                   <EstimatedTime time={time}/>
                   <EstimatedCost cost={80}/>
+                  <p className="main-content-youtube-link"><a href={youtubeLink} target="_blank" rel="noreferrer">Youtube Tutorial</a></p>
               </div>
             )}
-            {stepsAreLoading && <LoadingIcons.ThreeDots className="loading-icon" fill="#007bff" stroke="#704214"/>}
-            <InstructionSteps generatedSteps={generatedSteps}/>
+            {stepsAreLoading && <LoadingIcons.ThreeDots className="loading-icon" fill="#007bff"/>}
+            {!stepsAreLoading && <InstructionSteps generatedSteps={generatedSteps}/>}
         </div>
     )
 }
