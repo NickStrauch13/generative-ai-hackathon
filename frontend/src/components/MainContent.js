@@ -5,21 +5,23 @@ const MainContent = () => {
 
     const [textValue, setTextValue] = useState("");
     const [generatedSteps, setGeneratedSteps] = useState([]);
+    const [youtubeLink, setYoutubeLink] = useState("");
 
     const handleTextChange = (value) => {
         setTextValue(value);
     };
 
     const handleGenerateStepsClick = () => {
-        handleGenerateSteps(textValue, setGeneratedSteps);
+        handleGenerateSteps(textValue, setGeneratedSteps, setYoutubeLink);
     };
+
 
     return (
         <div className="main-content">
             <div className="main-content-input-container">
                 <input className="main-content-input-box" type="text" value={textValue} onChange={(e) => handleTextChange(e.target.value)} placeholder="Enter your text here..."/>
+                <button onClick={handleGenerateStepsClick}>Generate Steps</button>
             </div>
-            <button onClick={handleGenerateStepsClick}>Generate Steps</button>
             <div>
                 {generatedSteps.length > 0 && (
                 <ul>

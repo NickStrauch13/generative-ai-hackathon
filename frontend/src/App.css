@@ -105,6 +105,8 @@ body {
 }
 
 .main-content-input-container {
+  display: flex; 
+  align-items: center; 
   text-align: center;
 }
 

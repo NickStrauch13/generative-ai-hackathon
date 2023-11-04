@@ -1,4 +1,4 @@
-const handleGenerateSteps = async (textValue, setGeneratedSteps) => {
+const handleGenerateSteps = async (textValue, setGeneratedSteps, setYoutubeLink) => {
     const url = 'http://127.0.0.1:5000/generate_steps'; 
 
     const data = {
@@ -19,7 +19,8 @@ const handleGenerateSteps = async (textValue, setGeneratedSteps) => {
         }
 
         const jsonResponse = await response.json();
-        setGeneratedSteps(jsonResponse.steps);  
+        setGeneratedSteps(jsonResponse.response);  
+        setYoutubeLink(jsonResponse.yt_link);
     } catch (error) {
         console.error('Error:', error);
     }
