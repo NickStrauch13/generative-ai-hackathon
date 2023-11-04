@@ -9,7 +9,7 @@ const Rating = ({ rating }) => {
       return '#37b835'; // Green
     } else if (rating <= 4) {
       return '#ffc107'; // Yellow
-    } else if (rating === 5) {
+    } else if (rating >= 5) {
       return '#dc3545'; // Red
     } else {
       return '#ccc'; // Default color for unknown ratings
@@ -21,7 +21,7 @@ const Rating = ({ rating }) => {
       return 'Easy';
     } else if (rating <= 4) {
       return 'Medium';
-    } else if (rating === 5) {
+    } else if (rating >= 5) {
       return 'Hard';
     } else {
       return ''; // Default description for unknown ratings
