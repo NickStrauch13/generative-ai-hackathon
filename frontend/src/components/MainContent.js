@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import LoadingIcons from 'react-loading-icons'
 import handleGenerateSteps from "../apis/generate_steps";
 import InstructionSteps from "./InstructionSteps";
 import Rating from "./Rating";
@@ -45,6 +46,7 @@ const MainContent = () => {
                   <EstimatedCost cost={80}/>
               </div>
             )}
+            {stepsAreLoading && <LoadingIcons.ThreeDots className="loading-icon" fill="#007bff" stroke="#704214"/>}
             <InstructionSteps generatedSteps={generatedSteps}/>
         </div>
     )

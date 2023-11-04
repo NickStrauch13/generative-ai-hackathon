@@ -186,6 +186,12 @@ body {
   margin-bottom: 50px;
 }
 
+.loading-icon {
+  margin-top: 100px;
+  margin-bottom: 50px;
+  
+}
+
 .step-block {
   display: flex;
   justify-content: flex-start; 
