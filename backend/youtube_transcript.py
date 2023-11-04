@@ -36,11 +36,12 @@ def get_youtube_link(search_query, page_token=None):
             'pageToken': page_token  # Pass the page token here
         }
     )
-
     # Extract video link
     if response.json().get('items'):
         return "https://www.youtube.com/watch?v=" + response.json()['items'][0]['id']['videoId']
     else:
+        if 'error' in response.json() and 'message' in response.json()['error']:
+            print(response.json()['error']['message'])
         return None
 
 def find_suitable_video(search_query):
