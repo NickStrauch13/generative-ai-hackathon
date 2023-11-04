@@ -186,6 +186,12 @@ body {
   margin-bottom: 50px;
 }
 
+.loading-icon {
+  margin-top: 100px;
+  margin-bottom: 50px;
+  
+}
+
 .step-block {
   display: flex;
   justify-content: flex-start; 
@@ -225,10 +231,10 @@ body {
 .main-content-info-container {
   display: flex;
   justify-content: center;
-  align-items: left;
+  align-items: center;
   align-self: flex-start;
   flex-direction: column;
-  max-width: 100%;
+  width: 100%;
 }
 
 .rating-container {
@@ -289,4 +295,12 @@ body {
   font-size: 22px; 
   font-weight: bold;
   margin: 0; 
+}
+.estimated-cost-container p {
+  display: flex;
+  font-size: 24px; /* Increase the font size */
+  font-weight: bold; /* Make the text bold */
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
 }

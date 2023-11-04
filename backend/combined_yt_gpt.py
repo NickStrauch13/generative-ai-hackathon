@@ -8,17 +8,13 @@ temp_file = os.path.join("conversation_cache","temp.json")
 def main_combined(query="My toilet is broken, what should I do?"):
     # get the youtube link
     suitable_video = find_suitable_video(query)
-    if suitable_video is None:
+    while suitable_video is None:
         print("Couldn't find a suitable video for the given query.")
-        youtube_link = "youtube_link"
-        transcript = ""
-    else:
-        # get the youtube link
-        youtube_link = suitable_video[0]
-    
-        # get the transcript
-        transcript = suitable_video[1]
-    
+        query = input("Please try a different query: ")
+        suitable_video = find_suitable_video(query)
+    youtube_link = suitable_video[0]
+    # get the transcript
+    transcript = suitable_video[1]
     # query for solution steps
     new_query = f"Using this video transcript to help source information '{transcript}', answer this question '{query}' in clear steps"
     response = query_gpt(new_query, transcript=transcript, max_tokens=400)
@@ -60,7 +56,7 @@ def get_difficulty_and_time():
     response = data["response"]
     og_query = data["og_query"]
     # query gpt
-    diff_query = f"Based on your previous response to the prompt '{og_query}', how difficult is this task and how estimate long would it take for the average homeowner? (example response: Difficulty: x/5, Time: x minutes)- only return in this format."
+    diff_query = f"Based on your previous response to the prompt '{og_query}', how difficult is this task and how estimate long would it take for the average homeowner? (example response: Difficulty: x/5, Time: x minutes)- only return in this format DO NOT PUT ANYTHING ELSE BESIDES THIS FORMAT TIME SHOULD BE A SINGULAR NUMBER OF YOUR BEST ESTIMATE."
     diff_response = query_gpt(diff_query, transcript=transcript, prev_response=response, max_tokens=50)
     # get the difficulty and time
     # based on example response , get difficulty value and time string
