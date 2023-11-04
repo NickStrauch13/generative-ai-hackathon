@@ -97,23 +97,26 @@ body {
   background-color: #f8f9fa;
 }
 
+.main-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.main-content-input-container {
+  text-align: center;
+}
+
 .main-content-input-box {
-  width: 100%;
-  padding: 12px;
-  border: none;
-  font-size: 18px;
-  box-sizing: border-box;
-  margin-bottom: 20px;
+  padding: 10px;
+  margin-bottom: 10px;
+  width: 300px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.main-content-input-box:focus {
   outline: none;
-  background-color: #f8f9fa;
-  color: #333;
-  transition: border-color 0.3s;
-}
-
-.main-content-input::placeholder {
-  color: #aaa;
-}
-
-.main-content-input:focus::placeholder {
-  color: #ccc;
+  border-color: #007bff;
 }
