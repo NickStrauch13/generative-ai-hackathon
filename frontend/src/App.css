@@ -183,6 +183,16 @@ body {
   max-width: 75%;
 }
 
+.step-block {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  margin-top: 10px;
+  max-width: 100%;
+  background-color: #d4d4d4;
+}
+
 .main-content-info-container {
   display: flex;
   justify-content: center;
@@ -190,7 +200,6 @@ body {
   align-self: flex-start;
   flex-direction: column;
   max-width: 100%;
-
 }
 
 .rating-container {
@@ -200,6 +209,7 @@ body {
   flex-direction: row;
   margin-top: 50px;
   max-width: 100%;
+  margin-bottom: 10px;
 }
 
 .rating-circles-container {
@@ -243,6 +253,7 @@ body {
   font-size: 22px; 
   font-weight: bold;
   margin: 0; 
+  margin-bottom: 10px;
 }
 
 .estimated-cost-text {

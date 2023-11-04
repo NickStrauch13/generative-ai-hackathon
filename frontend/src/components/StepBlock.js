@@ -2,7 +2,7 @@ import React from 'react';
 
 const StepBlock = ({ text }) => {
   return (
-    <div className="step-box">
+    <div className="step-block">
       <p>{text}</p>
     </div>
   );

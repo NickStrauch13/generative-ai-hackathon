@@ -1,3 +1,7 @@
+
+let savedFileName;
+
+
 const handleGenerateSteps = async (textValue, setGeneratedSteps, setYoutubeLink) => {
     const url = 'http://127.0.0.1:5000/generate_steps'; 
 
@@ -21,6 +25,7 @@ const handleGenerateSteps = async (textValue, setGeneratedSteps, setYoutubeLink)
         const jsonResponse = await response.json();
         setGeneratedSteps(jsonResponse.response);  
         setYoutubeLink(jsonResponse.yt_link);
+        savedFileName = jsonResponse.cached_file;
     } catch (error) {
         console.error('Error:', error);
     }
