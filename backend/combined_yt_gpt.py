@@ -10,7 +10,7 @@ def main_combined(query="My toilet is broken, what should I do?"):
     suitable_video = find_suitable_video(query)
     if suitable_video is None:
         print("Couldn't find a suitable video for the given query.")
-        youtube_link = "youtub_link"
+        youtube_link = "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
         transcript = ""
     else:
         youtube_link = suitable_video[0]
@@ -18,7 +18,7 @@ def main_combined(query="My toilet is broken, what should I do?"):
         transcript = suitable_video[1]
         # query for solution steps
     new_query = f"Using this video transcript to help source information '{transcript}', answer this question '{query}' in clear steps"
-    response = query_gpt(new_query, transcript=transcript, max_tokens=400)
+    response = query_gpt(new_query, transcript=transcript, max_tokens=500)
     # get the steps
     steps = get_steps(response)
     # cache the conversation
@@ -31,9 +31,12 @@ def get_steps(rawoutput):
     output = rawoutput[rawoutput.index("1."):]
     steps = output.split("\n")
     # remove the numbers
-    steps = [step[2:] for step in steps]
+    print(output)
+    steps = [step[3:] for step in steps]
     # remove any empty strings
     steps = [step for step in steps if step]
+    # remove the last step
+    steps = steps[:-1]
     return steps
 
 def cache_conversation(transcript, response, query):
@@ -80,7 +83,7 @@ def elaborate_step(step_text):
     return elaborate_response
 
 if __name__ == '__main__':
-    query = "How would I go about building a shed?"
+    query = "How can I fix my dishwasher?, it is beeping and showing an error code"
     response, yt_link = main_combined(query)
     for step in response:
         print(step)
