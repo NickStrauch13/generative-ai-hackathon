@@ -5,14 +5,26 @@ const Rating = ({ rating }) => {
   const filledCircles = Math.min(maxRating, rating);
 
   const getCircleColor = () => {
-    if (rating <= 3) {
+    if (rating <= 2) {
       return '#37b835'; // Green
-    } else if (rating === 4) {
+    } else if (rating <= 4) {
       return '#ffc107'; // Yellow
     } else if (rating === 5) {
       return '#dc3545'; // Red
     } else {
       return '#ccc'; // Default color for unknown ratings
+    }
+  };
+
+  const getRatingDescription = () => {
+    if (rating <= 2) {
+      return 'Easy';
+    } else if (rating <= 4) {
+      return 'Medium';
+    } else if (rating === 5) {
+      return 'Hard';
+    } else {
+      return ''; // Default description for unknown ratings
     }
   };
 
@@ -30,11 +42,13 @@ const Rating = ({ rating }) => {
   }
 
   const ratingTextColor = getCircleColor();
+  const ratingDescription = getRatingDescription();
 
   return (
     <div className="rating-container">
+        <p className="rating-text-inital">Difficulty: </p>
         <div className="rating-circles-container">{circles}</div>
-        <p className="rating-text" style={{ color: ratingTextColor }}>{rating}/5 Difficulty</p>
+        <p className="rating-text-description" style={{ color: ratingTextColor }}>({ratingDescription})</p>
     </div>
   )
 };

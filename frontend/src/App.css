@@ -4,6 +4,11 @@
   padding: 0;
 }
 
+:root {
+  --accent-color: #8B4513; 
+  --dark-accent-color: #5a2d0c;
+}
+
 .app-container {
   max-width: 1400px; 
   margin:auto;
@@ -26,7 +31,7 @@ body {
   top: 0;
   width: 100%;
   height: 75px; 
-  background-color: #f96302; 
+  background-color: var(--accent-color); 
   color: #ffffff;
   display: flex;
   justify-content: space-between;
@@ -88,25 +93,46 @@ body {
   color: #ffffff;
 }
 
+.main-content-side-sapcer-left {
+  position: fixed;
+  top: 75;
+  left: 0;
+  height: 100%;
+  width: 10%;
+  background-color: var(--dark-accent-color);
+}
+
+.main-content-side-sapcer-right {
+  position: fixed;
+  top: 75;
+  right: 0;
+  height: 100%;
+  width: 10%;
+  background-color: var(--dark-accent-color);
+}
+
 .main-content-container {
   margin-top: 75px;
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
-  background-color: #f8f9fa;
+  flex-direction: row;
+  background-color: #f8f9fa;;
 }
 
 .main-content {
   display: flex;
+  width: 80%;
   flex-direction: column;
-  justify-content: center;
+  justify-content: top;
   align-items: center;
   height: 100vh;
 }
 
 .main-content-input-container {
+  width: 800px;
   display: flex; 
+  margin-top: 50px;
   justify-content: center;
   align-items: center; 
   text-align: center;
@@ -114,9 +140,17 @@ body {
 
 .main-content-input-box {
   padding: 10px 20px;
-  width: 300px;
+  width: 100%;
+  height: 60px;
+  max-height: 120px;
+  min-height: 60px;
   border: 1px solid #ccc;
   border-radius: 5px;
+  resize: vertical;
+  overflow: hidden;
+  font-family: Arial, sans-serif;
+  font-size: 18px;
+  line-height: 1.6;
 }
 
 .main-content-input-box:focus {
@@ -126,6 +160,7 @@ body {
 
 .main-content-submit-button {
   padding: 10px 20px;
+  height: 60px;
   border: none;
   border-radius: 5px;
   background-color: #007bff; 
@@ -148,13 +183,23 @@ body {
   max-width: 75%;
 }
 
-.rating-container {
+.main-content-info-container {
   display: flex;
   justify-content: center;
+  align-items: left;
+  align-self: flex-start;
+  flex-direction: column;
+  max-width: 100%;
+
+}
+
+.rating-container {
+  display: flex;
+  justify-content: left;
   align-items: center;
   flex-direction: row;
   margin-top: 50px;
-  max-width: 75%;
+  max-width: 100%;
 }
 
 .rating-circles-container {
@@ -166,22 +211,41 @@ body {
 }
 
 .filled-circle {
-  width: 25px;
-  height: 25px;
+  width: 20px;
+  height: 20px;
   border: 1px solid #ccc;
   border-radius: 50%;
   margin-right: 3px; 
 }
 
 .empty-circle {
-  width: 25px;
-  height: 25px;
+  width: 20px;
+  height: 20px;
   border: 2px solid #ccc; 
   border-radius: 50%;
   margin-right: 3px; 
 }
 
-.rating-text {
+.rating-text-inital {
+  font-size: 22px; 
+  font-weight: bold;
+  margin: 0; 
+  margin-right: 20px;
+}
+
+.rating-text-description {
+  font-size: 18px; 
+  font-weight: bold;
+  margin: 0; 
+}
+
+.estimated-time-text {
+  font-size: 22px; 
+  font-weight: bold;
+  margin: 0; 
+}
+
+.estimated-cost-text {
   font-size: 22px; 
   font-weight: bold;
   margin: 0; 
