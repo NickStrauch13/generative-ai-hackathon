@@ -21,7 +21,6 @@ def get_steps(rawoutput):
     steps = [step[2:] for step in steps]
     # remove any empty strings
     steps = [step for step in steps if step]
-    print(steps)
     return steps
 
 
