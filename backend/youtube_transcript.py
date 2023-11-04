@@ -13,10 +13,11 @@ def getYoutubeTranscript(video_link):
 def getVideoIDfromLink(video_link):
     pattern = r'=(.*?)(?:&|$)'
     
+    # print(f"video link {video_link}")
     # Searching for the pattern in the provided URL
-    match = re.search(pattern, video_link)
+    match = re.search(pattern, video_link[0])
     
     # If a match is found, return the captured substring; otherwise return None
     return match.group(1) if match else None
     
-print(getYoutubeTranscript("https://www.youtube.com/watch?v=vKTBBc13o88"))
+# print(getYoutubeTranscript("https://www.youtube.com/watch?v=vKTBBc13o88"))
