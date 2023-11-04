@@ -1,7 +1,4 @@
 
-let savedFileName;
-
-
 const handleGenerateSteps = async (textValue, setGeneratedSteps, setYoutubeLink, setDifficulty, setTime, setStepsAreLoading, setInfoIsLoading, setHasGenerated) => {
     const generatesteps_url = 'http://127.0.0.1:5000/generate_steps'; 
     const difficulty_url = 'http://127.0.0.1:5000/get_difficulty'
@@ -29,16 +26,14 @@ const handleGenerateSteps = async (textValue, setGeneratedSteps, setYoutubeLink,
         const jsonResponse = await response.json();
         setGeneratedSteps(jsonResponse.response);  
         setYoutubeLink(jsonResponse.yt_link);
-        savedFileName = jsonResponse.cached_file;
         setStepsAreLoading(false);
 
         // Call the second api now
         const response2 = await fetch(difficulty_url, {
-            method: 'POST',
+            method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({"cached_file": savedFileName}),
+            }
         });
         const jsonResponse2 = await response2.json();
         setDifficulty(jsonResponse2.difficulty);
