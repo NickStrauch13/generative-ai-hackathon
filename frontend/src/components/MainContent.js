@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import handleGenerateSteps from "../apis/generate_steps";
+import InstructionSteps from "./InstructionSteps";
+import Rating from "./Rating";
 
 const MainContent = () => {
 
@@ -22,15 +24,8 @@ const MainContent = () => {
                 <input className="main-content-input-box" type="text" value={textValue} onChange={(e) => handleTextChange(e.target.value)} placeholder="Enter your text here..."/>
                 <button className="main-content-submit-button" onClick={handleGenerateStepsClick}>Generate</button>
             </div>
-            <div className="instruction-steps-container">
-                {generatedSteps.length > 0 && (
-                <ol>
-                    {generatedSteps.map((step, index) => (
-                    <li key={index}>{step}</li>
-                    ))}
-                </ol>
-                )}
-            </div>
+            <Rating rating={3}/>
+            <InstructionSteps generatedSteps={generatedSteps}/>
         </div>
     )
 }
