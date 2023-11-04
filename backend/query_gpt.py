@@ -15,7 +15,7 @@ def query_gpt(prompt, transcript="", engine='gpt-3.5-turbo', max_tokens=100, tem
         messages=[
             {
                 "role": "system",
-                "content": f"You are an household assisant good at fixing things, answer this question succinctly yet informative with clear steps"
+                "content" : f"You are an household assisant good at fixing things, give a thoughtfull response according to this helpful video transcript '{transcript}' succinctly yet informative with clear steps"
             },
             {
                 "role": "user",
@@ -34,6 +34,6 @@ def query_gpt(prompt, transcript="", engine='gpt-3.5-turbo', max_tokens=100, tem
 
 
 if __name__ == '__main__':
-    prompt = "My toilet is broken, what should I do?"
+    prompt = "How do I "
     response = query_gpt(prompt)
     print(response)
