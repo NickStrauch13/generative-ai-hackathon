@@ -9,7 +9,10 @@ temp_dir = os.path.join("backend", "conversation_cache")
 def main_combined(query="My toilet is broken, what should I do?"):
     # get the youtube link
     suitable_video = find_suitable_video(query)
-    # get the youtube link
+    while suitable_video is None:
+        print("Couldn't find a suitable video for the given query.")
+        query = input("Please try a different query: ")
+        suitable_video = find_suitable_video(query)
     youtube_link = suitable_video[0]
     # get the transcript
     transcript = suitable_video[1]

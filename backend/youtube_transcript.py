@@ -45,7 +45,11 @@ def get_youtube_link(search_query, page_token=None):
 
 def find_suitable_video(search_query):
     page_token = None
+    count = 0
     while True:
+        count += 1
+        if count > 20:
+            return None
         video_link = get_youtube_link(search_query, page_token)  # Pass the page token here
         if not video_link:
             break
