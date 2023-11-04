@@ -9,7 +9,7 @@ def getYoutubeTranscript(video_link):
     text = ''
     for i in range(len(transcript)):
         text += transcript[i]['text'] + ' '
-    print(text)
+    return text
 def getVideoIDfromLink(video_link):
     pattern = r'=(.*?)(?:&|$)'
     
@@ -19,3 +19,4 @@ def getVideoIDfromLink(video_link):
     # If a match is found, return the captured substring; otherwise return None
     return match.group(1) if match else None
     
+print(getYoutubeTranscript("https://www.youtube.com/watch?v=vKTBBc13o88"))
