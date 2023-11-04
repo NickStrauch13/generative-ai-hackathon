@@ -20,15 +20,15 @@ const MainContent = () => {
         <div className="main-content">
             <div className="main-content-input-container">
                 <input className="main-content-input-box" type="text" value={textValue} onChange={(e) => handleTextChange(e.target.value)} placeholder="Enter your text here..."/>
-                <button onClick={handleGenerateStepsClick}>Generate Steps</button>
+                <button className="main-content-submit-button" onClick={handleGenerateStepsClick}>Generate</button>
             </div>
-            <div>
+            <div className="instruction-steps-container">
                 {generatedSteps.length > 0 && (
-                <ul>
+                <ol>
                     {generatedSteps.map((step, index) => (
                     <li key={index}>{step}</li>
                     ))}
-                </ul>
+                </ol>
                 )}
             </div>
         </div>
