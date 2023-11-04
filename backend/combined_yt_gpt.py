@@ -8,14 +8,15 @@ temp_file = os.path.join("conversation_cache","temp.json")
 def main_combined(query="My toilet is broken, what should I do?"):
     # get the youtube link
     suitable_video = find_suitable_video(query)
-    while suitable_video is None:
+    if suitable_video is None:
         print("Couldn't find a suitable video for the given query.")
-        query = input("Please try a different query: ")
-        suitable_video = find_suitable_video(query)
-    youtube_link = suitable_video[0]
-    # get the transcript
-    transcript = suitable_video[1]
-    # query for solution steps
+        youtube_link = "youtub_link"
+        transcript = ""
+    else:
+        youtube_link = suitable_video[0]
+        # get the transcript
+        transcript = suitable_video[1]
+        # query for solution steps
     new_query = f"Using this video transcript to help source information '{transcript}', answer this question '{query}' in clear steps"
     response = query_gpt(new_query, transcript=transcript, max_tokens=400)
     # get the steps
