@@ -13,6 +13,7 @@ const MainContent = () => {
     const [youtubeLink, setYoutubeLink] = useState("");
     const [difficulty, setDifficulty] = useState("");
     const [time, setTime] = useState("");
+    const [cost, setCost] = useState("");
     const [stepsAreLoading, setStepsAreLoading] = useState(false);
     const [infoIsLoading, setInfoIsLoading] = useState(false);
     const [hasGenerated, setHasGenerated] = useState(false);
@@ -27,6 +28,7 @@ const MainContent = () => {
                             setYoutubeLink, 
                             setDifficulty, 
                             setTime,
+                            setCost,
                             setStepsAreLoading,
                             setInfoIsLoading,
                             setHasGenerated);
@@ -36,18 +38,18 @@ const MainContent = () => {
     return (
         <div className="main-content">
             <div className="main-content-input-container">
-                <textarea className="main-content-input-box" rows="2" value={textValue} onChange={(e) => handleTextChange(e.target.value)} placeholder="What do you need to fix?"/>
+                <textarea className="main-content-input-box" rows="2" value={textValue} onChange={(e) => handleTextChange(e.target.value)} placeholder="I need to fix..."/>
                 <button className="main-content-submit-button" onClick={handleGenerateStepsClick}>Generate</button>
             </div>
             {!infoIsLoading && hasGenerated && (
               <div className="main-content-info-container">
                   <Rating rating={difficulty}/>
                   <EstimatedTime time={time}/>
-                  <EstimatedCost cost={80}/>
+                  <EstimatedCost cost={cost}/>
                   <p className="main-content-youtube-link"><a href={youtubeLink} target="_blank" rel="noreferrer">Youtube Tutorial</a></p>
               </div>
             )}
-            {stepsAreLoading && <LoadingIcons.ThreeDots className="loading-icon" fill="#007bff"/>}
+            {(stepsAreLoading || infoIsLoading) && <LoadingIcons.ThreeDots className="loading-icon" fill="#007bff"/>}
             {!stepsAreLoading && <InstructionSteps generatedSteps={generatedSteps}/>}
         </div>
     )

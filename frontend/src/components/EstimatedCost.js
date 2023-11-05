@@ -28,9 +28,9 @@ const EstimatedCost = ({ cost }) => {
   return (
     <div className="estimated-cost-container" style={containerStyle}>
       <p style={titleStyle}>Estimated Cost</p>
-      <p style={costStyle}>${cost}</p> {/* Apply titleStyle to this element */}
+      <p style={costStyle}>{cost}</p> 
     </div>
   );
-};
+};  
 
 export default EstimatedCost;
