@@ -1,3 +1,7 @@
+function convertToEmbedURL(youtubeLink) {
+    console.log("Original Link:", youtubeLink);
+    return youtubeLink.replace("watch?v=", "embed/");
+}
 
 const handleGenerateSteps = async (textValue, setGeneratedSteps, setYoutubeLink, setDifficulty, setTime, setCost, setStepsAreLoading, setInfoIsLoading, setHasGenerated) => {
     const generatesteps_url = 'http://127.0.0.1:5000/generate_steps'; 
@@ -24,8 +28,10 @@ const handleGenerateSteps = async (textValue, setGeneratedSteps, setYoutubeLink,
         }
 
         const jsonResponse = await response.json();
+        console.log("Received yt_link:", jsonResponse.yt_link);
         setGeneratedSteps(jsonResponse.response);  
-        setYoutubeLink(jsonResponse.yt_link);
+        setYoutubeLink(convertToEmbedURL(jsonResponse.yt_link));
+        console.log("Updated Embed Link:", convertToEmbedURL(jsonResponse.yt_link));
         setStepsAreLoading(false);
 
         // Call the second api now

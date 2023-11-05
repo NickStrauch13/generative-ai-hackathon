@@ -45,8 +45,20 @@ const MainContent = () => {
               <div className="main-content-info-container">
                   <Rating rating={difficulty}/>
                   <EstimatedTime time={time}/>
-                  <EstimatedCost cost={cost}/>
-                  <p className="main-content-youtube-link"><a href={youtubeLink} target="_blank" rel="noreferrer">Youtube Tutorial</a></p>
+                  <EstimatedCost cost={80}/>
+                  {youtubeLink && (
+                        <div className="main-content-youtube-frame">
+                            <iframe 
+                                title="YouTube Video"
+                                width="410" 
+                                height="231" 
+                                src={youtubeLink}
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                allowFullScreen>
+                            </iframe>
+                        </div>
+                    )}
+
               </div>
             )}
             {(stepsAreLoading || infoIsLoading) && <LoadingIcons.ThreeDots className="loading-icon" fill="#007bff"/>}

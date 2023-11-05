@@ -81,7 +81,7 @@ def elaborate_step(step_text):
     with open(temp_path, 'r') as f:
         data = json.load(f)
     # elaborate on the step text by querying gpt
-    elaborate_query = f"Elaborate on this step '{step_text}' in more detail in a clear and concise paragraph. DO NOT REPEAT STEP JUST ELABORATE ON IT!"
+    elaborate_query = f"Elaborate on this step '{step_text}' in more detail in a clear and concise paragraph. DO NOT REPEAT STEP JUST ELABORATE ON IT! AND DO NOT SAY, TO ELABORATE ON!"
     elaborate_response = query_gpt(elaborate_query, transcript=data['transcript'], prev_response=data['og_query'], max_tokens=150)
     return elaborate_response
 
