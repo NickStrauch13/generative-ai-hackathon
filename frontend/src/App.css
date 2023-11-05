@@ -191,6 +191,11 @@ body {
   margin-bottom: 50px;
 }
 
+.main-content-youtube-frame {
+  margin-top: 20px;
+  margin-bottom: -20px;
+}
+
 .loading-icon-elaborate {
   margin-top: 20px;
   margin-bottom: 20px;

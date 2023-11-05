@@ -45,7 +45,7 @@ const MainContent = () => {
               <div className="main-content-info-container">
                   <Rating rating={difficulty}/>
                   <EstimatedTime time={time}/>
-                  <EstimatedCost cost={80}/>
+                  <EstimatedCost cost={cost}/>
                   {youtubeLink && (
                         <div className="main-content-youtube-frame">
                             <iframe 
