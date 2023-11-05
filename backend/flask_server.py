@@ -18,10 +18,10 @@ def generate():
 
 @app.route('/get_difficulty', methods=['GET'])
 @cross_origin()
-def difficulty():
+def get_difficulty_and_stuff():
     # get the cache file from main_combined
-    difficulty, time = get_difficulty_and_time()
-    data = {'difficulty': difficulty, "time": time}
+    difficulty, time, cost = get_difficulty_and_time()
+    data = {'difficulty': difficulty, "time": time, "cost": cost}
     return jsonify(data)
 
 @app.route('/elaborate_step', methods=['POST'])

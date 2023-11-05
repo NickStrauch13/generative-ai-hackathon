@@ -60,16 +60,19 @@ def get_difficulty_and_time():
     response = data["response"]
     og_query = data["og_query"]
     # query gpt
-    diff_query = f"Based on your previous response to the prompt '{og_query}', how difficult is this task and how estimate long would it take for the average homeowner? (example response: Difficulty: x/5, Time: x minutes)- only return in this format DO NOT PUT ANYTHING ELSE BESIDES THIS FORMAT TIME SHOULD BE A SINGULAR NUMBER OF YOUR BEST ESTIMATE."
+    diff_query = f"Based on your previous response to the prompt '{og_query}', how difficult is this task, estimate long would it take for the average homeowner, and give the cost? (example response: Difficulty: x/5, Time: x minutes, Cost: x dollars)- only return in this format DO NOT PUT ANYTHING ELSE BESIDES THIS FORMAT EACH ITEM SHOULD BE A SINGULAR NUMBER OR YOUR BEST ESTIMATE."
     diff_response = query_gpt(diff_query, transcript=transcript, prev_response=response, max_tokens=50)
     # get the difficulty and time
     # based on example response , get difficulty value and time string
+    print(diff_response)
     diff = diff_response[diff_response.index("Difficulty:"): diff_response.index("/5")]
-    time = diff_response[diff_response.index("Time:"):]
+    time = diff_response[diff_response.index("Time:"):(diff_response.index("Cost")-1)]
+    cost = diff_response[diff_response.index("Cost:"):]
     # remove the words difficulty and time
     diff = diff.replace("Difficulty: ", "")
     time = time.replace("Time: ", "")
-    return diff, time
+    cost = cost.replace("Cost: ", "")
+    return diff, time, cost
 
 def elaborate_step(step_text):
     # load in the temp file
@@ -78,7 +81,7 @@ def elaborate_step(step_text):
     with open(temp_path, 'r') as f:
         data = json.load(f)
     # elaborate on the step text by querying gpt
-    elaborate_query = f"Elaborate on this step '{step_text}' in more detail in a clear and concise paragraph"
+    elaborate_query = f"Elaborate on this step '{step_text}' in more detail in a clear and concise paragraph. DO NOT REPEAT STEP JUST ELABORATE ON IT!"
     elaborate_response = query_gpt(elaborate_query, transcript=data['transcript'], prev_response=data['og_query'], max_tokens=150)
     return elaborate_response
 
@@ -88,7 +91,8 @@ if __name__ == '__main__':
     for step in response:
         print(step)
     print(yt_link)
-    diff, time = get_difficulty_and_time()
+    diff, time, cost = get_difficulty_and_time()
     print(diff)
     print(time)
+    print(cost)
     print(elaborate_step(response[1]))
