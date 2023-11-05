@@ -189,7 +189,20 @@ body {
 .loading-icon {
   margin-top: 100px;
   margin-bottom: 50px;
-  
+}
+
+.loading-icon-elaborate {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-left: 40%;
+  height: 25px;
+}
+
+.step-block-outer {
+  margin-top: 10px;
+  background-color: #f0f0f0;
+  border-radius: 8px;
+  padding-bottom: 10px;
 }
 
 .step-block {
@@ -197,7 +210,6 @@ body {
   justify-content: flex-start; 
   align-items: center;
   flex-direction: row;
-  margin-top: 10px;
   max-width: 100%;
   background-color: #f0f0f0; 
   padding: 10px; 
@@ -226,6 +238,13 @@ body {
   font-size: 18px; 
   font-weight: bold;
   margin: 0; 
+}
+
+.step-elaboration {
+  font-size: 16px; 
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-top: 10px;
 }
 
 .main-content-info-container {
