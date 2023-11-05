@@ -23,7 +23,7 @@ def main_combined(query="My toilet is broken, what should I do?"):
     steps = get_steps(response)
     # cache the conversation
     cache_conversation(transcript, response, query)
-    return steps, youtube_link[0]
+    return steps, youtube_link
 
 def get_steps(rawoutput):
     # the raw output is a string of steps seperated with new lines and numbers, get the steps as a list of strings
