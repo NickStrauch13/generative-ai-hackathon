@@ -5,7 +5,7 @@ Pipelined OpenAI GPT3.5-Turbo using YouTube transcripts for Retreval Autmated Ge
 
 We built a React webapp to wrap this tool for use as a helpful AI handyman where users can input their issue and recieve a clear set of how-to steps. This includes clicking in to each step for elaboration, along with an embedded YouTube vieo and estimated difficulty, time, and cost.
 
-### To Use
+### To Use Main Application
 ```bash 
 pip install -r requirements.txt
 cd backend/
@@ -15,6 +15,11 @@ python ./flask_server.py
 cd frontend/
 npm install
 npm start
+```
+
+### LLM PDF Knowledge Base
+```
+streamlit run backend/app.py
 ```
 
 ### Repo Structure

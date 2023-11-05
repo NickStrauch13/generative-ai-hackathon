@@ -48,21 +48,20 @@ def get_Palm():
     models = [m for m in palm.list_models() if 'generateText' in m.supported_generation_methods]
     model = models[0].name
     print(model)
+    prompt = 'find a place to repair my car in North Carolina and return its coordinate'
 
-    # prompt = 'use Bard to help me find these Amazon items links: [brush, tongs, towel]'
-
-    # completion = palm.generate_text(
-    #     model=model,
-    #     prompt=prompt,
-    #     temperature=0,
-    #     # The maximum length of the response
-    #     max_output_tokens=1500,
-    # )
-    # print(completion.result)
+    completion = palm.generate_text(
+        model=model,
+        prompt=prompt,
+        temperature=0,
+        # The maximum length of the response
+        max_output_tokens=3000,
+    )
+    print(completion.result)
     # Setting temperature=1 usually produces more zany responses!
     # response = palm.chat(messages='help me find these Amazon items links: [brush, tongs, towel]')
-    response = palm.chat(messages="help me find these Amazon items links: [brush, tongs, towel]", temperature=0)
-    print(response.last)
+    # response = palm.chat(messages="help me find these Amazon items links: [brush, tongs, towel]", temperature=0)
+    # print(response.last)
     return
     
 
@@ -108,10 +107,11 @@ def extract_links(parse_data):
 
 
 if __name__ == "__main__":
-    query = "Assume that you are a Google search engine. You must find these Amazon items links: [brush, tongs, towel, gloves]."
-    res = use_bard(query)
+    # query = "Assume that you are a Google search engine. You must find these Amazon items links: [brush, tongs, towel, gloves]."
+    # res = use_bard(query)
     # print(res)
     # extract_links(res)
-    print(res['content'])
+    # print(res['content'])
+    get_Palm()
 
     
