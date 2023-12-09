@@ -4,8 +4,8 @@ function convertToEmbedURL(youtubeLink) {
 }
 
 const handleGenerateSteps = async (textValue, setGeneratedSteps, setYoutubeLink, setDifficulty, setTime, setCost, setStepsAreLoading, setInfoIsLoading, setHasGenerated) => {
-    const generatesteps_url = 'http://127.0.0.1:5000/generate_steps'; 
-    const difficulty_url = 'http://127.0.0.1:5000/get_difficulty'
+    const generatesteps_url = 'https://iproject4-flask.azurewebsites.net/generate_steps'; 
+    const difficulty_url = 'https://iproject4-flask.azurewebsites.net/get_difficulty'
 
     const data = {
         query: textValue, 

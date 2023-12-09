@@ -1,5 +1,5 @@
 const handleElaborate = async (textValue, setElaborate, setHasElaborated, setIsElaborating) => {
-    const elaborate_url = 'http://127.0.0.1:5000/elaborate_step'; 
+    const elaborate_url = 'https://iproject4-flask.azurewebsites.net/elaborate_step'; 
 
     const data = {
         step: textValue, 
